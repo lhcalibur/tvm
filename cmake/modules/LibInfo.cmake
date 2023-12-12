@@ -138,6 +138,7 @@ function(add_lib_info src_file)
     TVM_INFO_USE_MSC="${USE_MSC}"
     TVM_INFO_USE_CCACHE="${USE_CCACHE}"
     TVM_INFO_BACKTRACE_ON_SEGFAULT="${BACKTRACE_ON_SEGFAULT}"
+    TVM_INFO_USE_MIGRAPHX="${USE_MIGRAPHX}"
   )
 
 endfunction()

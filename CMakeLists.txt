@@ -128,6 +128,8 @@ tvm_option(USE_CLML_GRAPH_EXECUTOR "Build with CLML graph runtime" OFF)
 tvm_option(USE_UMA "Build with UMA support" OFF)
 tvm_option(USE_VERILATOR "Build with Verilator support" OFF)
 tvm_option(USE_MSC "Enable Multi-System Compiler" OFF)
+tvm_option(USE_MIGRAPHX "Enable MIGraphX Codegen" OFF)
+
 
 # include directories
 include_directories(${CMAKE_INCLUDE_PATH})
@@ -572,6 +574,7 @@ include(cmake/modules/contrib/VitisAI.cmake)
 include(cmake/modules/contrib/Verilator.cmake)
 include(cmake/modules/contrib/UMA.cmake)
 include(cmake/modules/contrib/MSC.cmake)
+include(cmake/modules/contrib/MIGraphX.cmake)
 include(cmake/modules/Git.cmake)
 include(cmake/modules/LibInfo.cmake)
 include(cmake/modules/RustExt.cmake)
@@ -927,3 +930,9 @@ if (USE_FLASHINFER STREQUAL "ON")
   target_link_libraries(tvm PRIVATE flashinfer_tvm)
   target_link_libraries(tvm_runtime PRIVATE flashinfer_tvm)
 endif ()
+
+
+if (USE_MIGRAPHX)
+  target_link_libraries(tvm PRIVATE migraphx::migraphx)
+  target_link_libraries(tvm_runtime PRIVATE migraphx::migraphx)
+endif()
